@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataBind</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+<div id="app">
+    <!-- v-model 与 Vue实例中的data中的name字段数据绑定 -->
+    <input type="text" v-model="name" placeholder="你的名字">
+    <h1>你好，{{ name }}</h1>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app', //element,用于指定页面的DOM来挂载Vue实例
+        data: {
+            name: ''
+        }
+    })
+    //Vue 本身也代理了data里面的属性
+    //app.name = "test"
+</script>
+</body>
+</html>

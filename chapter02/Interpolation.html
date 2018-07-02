@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interpolation</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="app">
+    <span v-html="date"></span>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            date: new Date()
+        },
+
+        mounted: function () {
+            var _this = this; //声明一个变量指向Vue实例this,保持作用域一致
+            this.timer = setInterval(function () {
+                _this.date = new Date();
+            }, 1000);
+        },
+        beforeDestroy: function () {
+            if (this.timer) {
+                clearInterval(this.timer); //在Vue实例销毁前，清除定时器
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
