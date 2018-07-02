@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="cal">
+    <h1>{{ number / 9 }}</h1>
+    <h1>{{ isOK ? '确定' : '取消' }}</h1>
+    <h1>{{ text.split(',').reverse().join(',') }}</h1>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#cal',
+        data: {
+            number: 100,
+            isOK: false,
+            text: "123,456"
+        }
+    })
+</script>
+
+</body>
+</html>

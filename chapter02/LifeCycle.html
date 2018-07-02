@@ -17,13 +17,13 @@
         data: {
             value: 2
         },
-        created: function () {
+        created: function () { //实例创建完成后调用
             console.log(this.value)
         },
-        mounted: function () {
+        mounted: function () { //el挂载到实例后调用
             console.log(this.value)
         },
-        beforeDestory: function () {
+        beforeDestory: function () { //销毁实例之前调用
             console.log(this.value)
         }
     })

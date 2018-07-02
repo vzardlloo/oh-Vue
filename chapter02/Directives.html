@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Directives</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="app">
+    <p v-if="show">show this text!</p>
+    <button v-on:click="handleClose">点击隐藏</button>
+    <button v-on:click="handleShow">点击出现</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show: true
+        },
+        methods: {
+            handleClose: function () {
+                this.close()
+            },
+            handleShow: function () {
+                this.show = true;
+            },
+            close: function () {
+                this.show = false;
+            }
+
+
+        }
+    })
+</script>
+</body>
+</html>
