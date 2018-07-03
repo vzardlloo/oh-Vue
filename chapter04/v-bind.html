@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="bind">
+    <a :href="url">链接</a>
+    <img :src="imgUrl">
+</div>
+<script>
+    var app = new Vue({
+        el: '#bind',
+        data: {
+            url: 'https://www.github.com',
+            imgUrl: 'https://avatars3.githubusercontent.com/u/19236844?s=460&v=4'
+        }
+    })
+</script>
+</body>
+</html>

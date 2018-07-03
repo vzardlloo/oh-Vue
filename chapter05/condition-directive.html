@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>condition-directive</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="app">
+    <p v-if="status === 1">status 为 1</p>
+    <p v-else-if="status === 2">status 为 2</p>
+    <p v-else>否则显示这行</p>
+</div>
+
+<div id="app2">
+    <template v-if="type === 'name'">
+        <label>用户名：</label>
+        <input placeholder="输入用户名" key="name-input">
+    </template>
+    <template v-else>
+        <label>邮箱：</label>
+        <input placeholder="输入邮箱" key="mail-input">
+    </template>
+    <button @click="handleToggleClick">切换输入类型</button>
+</div>
+<div id="context">
+    <div>
+        <ul>
+            <li v-for="(book,index) in books">{{ index }} - {{book.name}}</li>
+        </ul>
+    </div>
+
+    <div>
+        <ul>
+            <template v-for="b in books">
+                <li>书名：{{ b.name }}</li>
+                <li>作者：{{ b.author }}</li>
+            </template>
+        </ul>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            status: 4
+        }
+    })
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            type: 'name'
+        },
+        methods: {
+            handleToggleClick: function () {
+                this.type = this.type === 'name' ? 'mail' : 'name';
+            }
+        }
+    })
+
+    var app3 = new Vue({
+        el: '#context',
+        data: {
+            books: [
+                {
+                    name: '《西游记》',
+                    author: "吴承恩"
+                },
+                {
+                    name: '《红楼梦》',
+                    author: "曹雪芹"
+                },
+                {
+                    name: '《水浒传》',
+                    author: "施耐庵"
+                }
+            ]
+        }
+    })
+
+    app3.books.push({name: '《三国演义》', author: '罗贯中'});
+</script>
+
+</body>
+</html>
