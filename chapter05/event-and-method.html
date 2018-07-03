@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>eventandmethod</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+<div id="count">
+    点击次数：{{ counter }}
+    <button v-on:click="handleAdd(1)">+ 1</button>
+    <button v-on:click="handleAdd(10)">+ 10</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#count',
+        data: {
+            counter: 0
+        },
+        methods: {
+            handleAdd: function (count) {
+                count = count || 1;
+                this.counter += count;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
