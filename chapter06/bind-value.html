@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind-value</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="app">
+    <!--在给 <input /> 元素添加 v-model 属性时，默认会把 value 作为元素的属性，然后把 'input' 事件作为实时传递 value 的触发事件-->
+    <input type="radio" v-model="picked" :value="value">
+    <label>单选按钮</label>
+    <p> {{ picked }}</p>
+    <p> {{ value }}</p>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            picked: false,
+            value: 123
+        }
+    })
+</script>
+
+</body>
+</html>
