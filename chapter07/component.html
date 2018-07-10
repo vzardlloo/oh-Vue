@@ -14,7 +14,12 @@
     Vue.component('my-component', {});
 
     var Child = {
-        template: '<div>局部注册组件的内容</div>'
+        template: '<div>{{ message }}</div>',
+        data: function () {
+            return {
+                message: '组件内容'
+            }
+        }
     }
 
     var app = new Vue({
