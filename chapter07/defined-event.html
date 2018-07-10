@@ -7,6 +7,7 @@
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <body>
 
+<!-- 自定义指令 -->
 
 <div id="app">
     <p>总数： {{ total }}</p>
@@ -14,6 +15,11 @@
             @increase="handleGetTotal"
             @reduce="handleGetTotal">
     </my-component>
+</div>
+
+<div id="app2">
+    <my-component2 v-model="total"></my-component2>
+    <button @click="handleReduce">-1</button>
 </div>
 
 <script>
@@ -42,6 +48,16 @@
 
     });
 
+    Vue.component('my-component2', {
+        props: ['value'],
+        template: '<input :value="value" @input="updateValue">',
+        methods: {
+            updateValue: function (event) {
+                this.$emit('input', event.target.value);
+            }
+        }
+    })
+
     var app = new Vue({
         el: '#app',
         data: {
@@ -50,6 +66,19 @@
         methods: {
             handleGetTotal: function (total) {
                 this.total = total;
+            }
+        }
+    })
+
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            total: 0
+        },
+        methods: {
+            handleReduce: function () {
+                this.total--;
             }
         }
     })
