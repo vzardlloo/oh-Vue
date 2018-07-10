@@ -6,6 +6,29 @@
 </head>
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <body>
+<!-- slot分发的内容作用域是绑定在父组件上的 -->
+<div id="app">
+    <child-component>
+        <p slot="text">dddd</p>
+        <p slot="text">更多分发的内容</p>
+    </child-component>
+</div>
+
+
+<script>
+    Vue.component('child-component', {
+        template: '<div>\n' +
+        '    <slot name="text">\n' +
+        '        <p>如果父组件没有插入内容，我将作为默认出现</p>\n' +
+        '    </slot>\n' +
+        '</div>'
+    });
+
+    var app = new Vue({
+        el: '#app'
+    })
+
+</script>
 
 
 </body>
