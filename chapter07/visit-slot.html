@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>visit-slot</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<div id="app">
+    <child-component>
+        <h2 slot="header">标题</h2>
+        <p>正文内容</p>
+        <p>更多的正文内容</p>
+        <div slot="footer">底部信息</div>
+    </child-component>
+</div>
+
+<template id="child-component">
+    <div class="container">
+        <div class="header">
+            <slot name="header"></slot>
+        </div>
+        <div class="main">
+            <slot></slot>
+        </div>
+
+        <div class="footer">
+            <slot name="footer"></slot>
+        </div>
+
+    </div>
+</template>
+
+
+<script>
+    Vue.component('child-component', {
+        template: '#child-component',
+        mounted: function () {
+            var header = this.$slots.header;
+            var main = this.$slots.default;
+            var footer = this.$slots.footer;
+            console.log(footer)
+            console.log(footer[0].elm.innerHTML)
+        }
+    });
+
+    var app = new Vue({
+        el: 'app'
+    })
+
+
+</script>
+
+</body>
+</html>
