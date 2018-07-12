@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>next-tick</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+<!--
+Vue在监听到时间发生变化的时候不会直接更新DOM,而是会开启一个队列，来缓冲所有变化，同时去除
+重复的数据改变，来避免不必要的计算和DOM操作，这种异步操作可能导致我们直接操作DOM产生一些
+错误，使用$nextTick可以避免这种错误
+-->
+
+<div id="app">
+    <div id="div" v-if="showDiv">这是一段文本</div>
+    <button @click="getText">获取div内容</button>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            showDiv: false
+        },
+        methods: {
+            getText: function () {
+                this.showDiv = true;
+//                不使用$nextTick
+//                var text = document.getElementById('div').innerHTML;
+//                console.log(text)
+                this.$nextTick(function () {
+                    var text = document.getElementById('div').innerHTML;
+                    console.log(text);
+                })
+            }
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>

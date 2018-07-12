@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mount-object</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+<!-- 使用mount和Vue.extend 可以手动挂载实例 -->
+
+<div id="mount-div">
+
+</div>
+
+<script>
+    //extend 创建
+    var MyComponent = Vue.extend({
+        template: '<div>Hello: {{ name }}</div>',
+        data: function () {
+            return {
+                name: 'Aresn'
+            }
+        }
+    });
+    //$mount挂载
+    new MyComponent().$mount('#mount-div');
+</script>
+
+
+</body>
+</html>
