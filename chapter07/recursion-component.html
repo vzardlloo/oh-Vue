@@ -7,5 +7,36 @@
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <body>
 
+<div id="app">
+    <child-component :count="1"></child-component>
+</div>
+
+
+<template id="child-template">
+    <div class="child">
+        <child-component :count="count + 1" v-if="count < 3">
+        </child-component>
+    </div>
+</template>
+
+<script>
+    Vue.component('child-component', {
+        name: 'child-component',
+        props: {
+            count: {
+                type: Number,
+                default: 1
+            }
+        },
+        template: '#child-template',
+    });
+
+
+    var app = new Vue({
+        el: "#app"
+    })
+
+</script>
+
 </body>
 </html>
