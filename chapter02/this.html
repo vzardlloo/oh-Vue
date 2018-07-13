@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<body>
+
+<script>
+    var obj = {
+        data: 'data for test',
+
+        func: {
+            data: "data for func",
+            func2: function () {
+                var _this = this;
+                // true
+                window.console.log(obj.func === this);
+                window.console.log(_this.data)
+                inside()
+
+                function inside() {
+                    // true
+                    window.console.log(window === this)
+                    window.console.log(_this.data)
+                }
+            }
+        }
+    }
+
+    obj.func.func2()
+
+</script>
+
+
+</body>
+</html>
