@@ -9,7 +9,7 @@ Vue.component('input-number', {
     type="text" \
     v-model="value" \
     :value="currentValue" \
-    @change="handleChange"> \
+    @change="handleChange" @keydown="handlekeyboard"> \
     <button \
     @click="handleDown" \
     :disabled="currentValue <= min">-</button> \
@@ -29,6 +29,10 @@ Vue.component('input-number', {
         value: {
             type: Number,
             default: 0
+        },
+        step: {
+            type: Number,
+            default: 1
         }
     },
     data: function () {
@@ -53,11 +57,11 @@ Vue.component('input-number', {
         },
         handleDown: function () {
             if (this.currentValue <= this.min) return;
-            this.currentValue -= 1;
+            this.currentValue -= this.step;
         },
         handleUp: function () {
             if (this.currentValue >= this.max) return;
-            this.currentValue += 1;
+            this.currentValue += this.step;
         },
         handleChange: function (event) {
             var val = event.target.value.trim();
@@ -75,6 +79,16 @@ Vue.component('input-number', {
 
             } else {
                 event.target.value = this.currentValue;
+            }
+        },
+        handlekeyboard: function (event) {       //监听键盘事件,keyCode区分按键
+            console.log(event.keyCode);
+            if (event.keyCode === 38) {
+
+                this.currentValue += this.step;
+            }
+            if (event.keyCode === 40) {
+                this.currentValue -= this.step;
             }
         }
     },
