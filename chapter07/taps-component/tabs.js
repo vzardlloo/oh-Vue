@@ -29,6 +29,7 @@ Vue.component('tabs', {
         }
     },
     methods: {
+        //更改样式
         tabCls: function (item) {
             return [
                 'tabs-tab',
@@ -37,6 +38,7 @@ Vue.component('tabs', {
                 }
             ]
         },
+        // 获取所有组件
         getTabs: function () {
             // 获取子组件中所有的pane组件
             return this.$children.filter(function (t) {
